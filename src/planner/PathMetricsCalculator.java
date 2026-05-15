@@ -16,6 +16,7 @@ public class PathMetricsCalculator {
         for (GraphQueryCase queryCase : queryCases) {
             ShortestPathResult result = shortestPathResults.get(queryCase.getCaseName());
             int nodeCount = result == null ? 0 : result.getPathNodes().size();
+            // A reachable path with n nodes has n - 1 edges
             int edgeCount = result != null && result.isReachable() && nodeCount > 0 ? nodeCount - 1 : 0;
             double totalCost = result == null ? Double.POSITIVE_INFINITY : result.getTotalCost();
 

@@ -26,6 +26,7 @@ public class QuickSort extends AbstractSortingAlgorithm {
     }
 
     private int partition(List<LocationCandidate> candidates, int low, int high) {
+        // Use the last item as the pivot here
         LocationCandidate pivot = candidates.get(high);
         int smallerBoundary = low - 1;
 

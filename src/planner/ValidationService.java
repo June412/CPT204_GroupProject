@@ -11,6 +11,7 @@ import model.ValidationCheck;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -239,9 +240,10 @@ public class ValidationService {
         if (Double.isInfinite(cost)) {
             return "Infinity";
         }
+        // Keep cost formatting the same on different computers
         if (cost == Math.rint(cost)) {
-            return String.format("%.0f", cost);
+            return String.format(Locale.US, "%.0f", cost);
         }
-        return String.format("%.3f", cost);
+        return String.format(Locale.US, "%.3f", cost);
     }
 }

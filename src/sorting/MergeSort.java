@@ -16,6 +16,7 @@ public class MergeSort extends AbstractSortingAlgorithm {
         if (candidates.size() <= 1) {
             return;
         }
+        // Temp list so merge can read old values while writing back
         List<LocationCandidate> temporary = new ArrayList<LocationCandidate>(candidates);
         mergeSort(candidates, temporary, 0, candidates.size() - 1);
     }

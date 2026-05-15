@@ -15,6 +15,7 @@ public class BubbleSort extends AbstractSortingAlgorithm {
         int size = candidates.size();
         boolean swapped = true;
 
+        // Stop early if a full pass did not swap anything
         for (int pass = 0; pass < size - 1 && swapped; pass++) {
             swapped = false;
             for (int index = 0; index < size - pass - 1; index++) {

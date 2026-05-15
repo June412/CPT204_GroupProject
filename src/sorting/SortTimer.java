@@ -21,6 +21,7 @@ public class SortTimer {
             int rounds,
             int warmupRounds,
             int topK) {
+        // Warm-up runs are not counted in the final timing
         for (int warmup = 0; warmup < warmupRounds; warmup++) {
             List<LocationCandidate> warmupCopy = new ArrayList<LocationCandidate>(originalCandidates);
             algorithm.sort(warmupCopy);
@@ -31,6 +32,7 @@ public class SortTimer {
         List<LocationCandidate> lastSortedCopy = new ArrayList<LocationCandidate>();
 
         for (int round = 0; round < rounds; round++) {
+            // Sort a fresh copy so each round starts the same
             List<LocationCandidate> workingCopy = new ArrayList<LocationCandidate>(originalCandidates);
 
             long startTime = System.nanoTime();
@@ -71,6 +73,7 @@ public class SortTimer {
         }
 
         List<LocationCandidate> expected = results.get(0).getSortedCandidates();
+        // Compare the full order before trusting one algorithm's top 10
         for (int index = 1; index < results.size(); index++) {
             if (!expected.equals(results.get(index).getSortedCandidates())) {
                 return false;

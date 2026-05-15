@@ -40,6 +40,7 @@ public class WeightedGraph {
 
         double bestWeight = Double.POSITIVE_INFINITY;
         for (Edge edge : edges) {
+            // If the CSV has repeated edges, use the cheapest one
             if (edge.getToLocation().equals(toLocation) && edge.getWeight() < bestWeight) {
                 bestWeight = edge.getWeight();
             }

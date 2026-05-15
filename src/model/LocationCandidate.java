@@ -24,10 +24,12 @@ public class LocationCandidate implements Comparable<LocationCandidate> {
 
     @Override
     public int compareTo(LocationCandidate other) {
+        // Higher priority scores should come first
         int scoreComparison = Integer.compare(other.priorityScore, this.priorityScore);
         if (scoreComparison != 0) {
             return scoreComparison;
         }
+        // Use the id as a tie breaker so the order stays stable
         return this.locationId.compareTo(other.locationId);
     }
 

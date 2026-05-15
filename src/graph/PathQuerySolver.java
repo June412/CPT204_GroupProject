@@ -53,6 +53,7 @@ public class PathQuerySolver {
             completePath.addAll(segmentPath);
             return;
         }
+        // Skip the first node so the waypoint is not added twice
         for (int index = 1; index < segmentPath.size(); index++) {
             completePath.add(segmentPath.get(index));
         }

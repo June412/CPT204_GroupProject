@@ -28,6 +28,7 @@ public class DijkstraSolver {
         Map<String, Double> distances = new HashMap<String, Double>();
         Map<String, String> previousNodes = new HashMap<String, String>();
         Set<String> visited = new HashSet<String>();
+        // Queue keeps the next cheapest node to try
         PriorityQueue<NodeDistance> priorityQueue = new PriorityQueue<NodeDistance>(
                 Comparator.comparingDouble(NodeDistance::getDistance).thenComparing(NodeDistance::getLocation));
 
@@ -58,6 +59,7 @@ public class DijkstraSolver {
                         : Double.POSITIVE_INFINITY;
 
                 if (candidateDistance < knownDistance) {
+                    // Keep the best cost found so far for each neighbor
                     distances.put(neighbor, candidateDistance);
                     previousNodes.put(neighbor, current.getLocation());
                     priorityQueue.add(new NodeDistance(neighbor, candidateDistance));

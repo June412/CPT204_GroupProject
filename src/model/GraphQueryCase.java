@@ -30,6 +30,7 @@ public class GraphQueryCase {
         if (waypointLocations == null) {
             this.waypointLocations = Collections.emptyList();
         } else {
+            // Copy waypoints so the case cannot change later by accident
             this.waypointLocations = Collections.unmodifiableList(new ArrayList<String>(waypointLocations));
         }
     }
@@ -52,6 +53,7 @@ public class GraphQueryCase {
 
     public List<String> getOrderedStops() {
         List<String> stops = new ArrayList<String>();
+        // The solver links each neighboring pair in this list
         stops.add(startLocation);
         stops.addAll(waypointLocations);
         stops.add(destinationLocation);
